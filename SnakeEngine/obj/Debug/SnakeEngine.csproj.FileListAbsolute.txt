@@ -1,0 +1,11 @@
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeEngine\bin\Debug\SnakeEngine.dll
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeEngine\bin\Debug\SnakeEngine.pdb
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeEngine\bin\Debug\PresentationCore.dll
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeEngine\bin\Debug\PresentationFramework.dll
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeEngine\bin\Debug\System.Design.dll
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeEngine\bin\Debug\System.Xaml.dll
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeEngine\bin\Debug\UIAutomationProvider.dll
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeEngine\bin\Debug\WindowsBase.dll
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeEngine\obj\Debug\SnakeEngine.csprojResolveAssemblyReference.cache
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeEngine\obj\Debug\SnakeEngine.dll
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeEngine\obj\Debug\SnakeEngine.pdb
