@@ -1,0 +1,15 @@
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeDAL\bin\Debug\SnakeDAL.dll.config
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeDAL\bin\Debug\SnakeDAL.dll
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeDAL\bin\Debug\SnakeDAL.pdb
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeDAL\bin\Debug\EntityFramework.dll
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeDAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeDAL\bin\Debug\SnakeEngine.dll
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeDAL\bin\Debug\SnakeEngine.pdb
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeDAL\bin\Debug\EntityFramework.xml
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeDAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeDAL\obj\Debug\SnakeDAL.csprojResolveAssemblyReference.cache
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeDAL\obj\Debug\SnakeDAL.Migrations.FirstSnakeDbschema.resources
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeDAL\obj\Debug\SnakeDAL.Migrations.RankingPlacewithTimeOfResult.resources
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeDAL\obj\Debug\SnakeDAL.csproj.GenerateResource.Cache
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeDAL\obj\Debug\SnakeDAL.dll
+C:\Users\sasha\Desktop\snakegamepro\snakegamepro\Solution\SnakeDAL\obj\Debug\SnakeDAL.pdb
