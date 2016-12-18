@@ -1,0 +1,206 @@
+﻿<Window x:Class="Snake.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Snake"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen"
+        Title="Snake" Height="549" Width="796"
+        KeyDown="Window_KeyDown" Loaded="Window_Loaded"
+        Icon="Img/snake-icon(blue).png">
+    <Grid Background="White">
+
+        <!--******* Game markup *********-->
+        <Grid Name="GameGrid" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Name="GameStatisticStackPanel" Margin="15,0,0,10" Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Bottom" Text="Score: " FontSize="16" Foreground="#FF3073EA" FontWeight="Bold"/>
+                <TextBlock VerticalAlignment="Bottom" Name="ScoreTextBlock" Margin="5,0" Text="0" FontSize="20" Foreground="#FFF9801B" FontWeight="Bold"/>
+
+                <StackPanel Name="TimeBlockStackPanel" Visibility="Hidden" Margin="50,0,0,0" Orientation="Horizontal" VerticalAlignment="Bottom">
+                    <TextBlock VerticalAlignment="Center"  Text="Time: " FontSize="16" Foreground="#FF3073EA" FontWeight="Bold"/>
+                    <TextBlock Name="TimeTextBlock" VerticalAlignment="Center" Text="" FontSize="20" Foreground="#FF4DDA18" FontWeight="Bold"/>
+                </StackPanel>
+
+            </StackPanel>
+
+            <Canvas Name="Canvas" Grid.Row="1"  Background="White" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+
+            <Grid Name="StartTipGrid" Grid.Row="1" Background="#76EEEEEE">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" VerticalAlignment="Center" Margin="0,70,0,0" HorizontalAlignment="Center" Text="Press one of these keys to start" FontSize="18" FontWeight="Bold"/>
+                <Image Source="Img/help-key(black).png" Margin="0,20,0,20" Grid.Row="1" Width="150" Height="150"/>
+                <Button Name="BackToMenuFromTipBtn" Grid.Row="2" Margin="0,50" Width="300" Height="50"  Content="Back to menu" Click="BackToMenuFromTipBtn_Click"/>
+            </Grid>
+
+            <Grid Name="GameOverGrid" Visibility="Hidden" Grid.Row="1" Background="#76EEEEEE">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" VerticalAlignment="Center" Margin="0,70,0,0" HorizontalAlignment="Center" Text="Game over" FontSize="18" FontWeight="Bold"/>
+
+                <StackPanel VerticalAlignment="Center" Grid.Row="1"  Margin="0,0,0,50" >
+
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center"  HorizontalAlignment="Center" >
+                        <TextBlock Margin="10,0" Text="Your Score:" FontSize="18" FontWeight="Bold"/>
+                        <TextBlock Name="GameOverScoreTextBlock" Margin="10,0" Text="20" FontSize="18" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <Button Name="PlayAgainBtn" Margin="0,25" Width="300" Height="50"  Content="Play again" Click="PlayAgainBtn_Click"/>
+                    <Button Name="BackToMenuFromGameBtn" Margin="0,25" Width="300" Height="50"  Content="Back to menu" Click="BackToMenuFromGameBtn_Click"/>
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+
+        <!--******* Menu markup *********-->
+        <Grid Name="MenuGrid" Visibility="Visible">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="71*"/>
+                <ColumnDefinition Width="394*"/>
+                <ColumnDefinition Width="325*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Snake" FontSize="36" Foreground="#FFF9801B" FontWeight="Bold" Background="White" Margin="270,15,15,15" Grid.Column="1"/>
+
+            <StackPanel Grid.Row="1" Name="WelcomeStackPanel" Visibility="Visible" VerticalAlignment="Center" Grid.ColumnSpan="3" Margin="0,73,0,72">
+                <Button Margin="0,25" Name="WelcomeStartBtn"  Width="300" Height="50" Content="Start" Click="WelcomeStartBtn_Click"/>
+                <Button Margin="0, 25" Name="HighScoreBtn" Width="300" Height="50" Content="High scores" Click="HighScoreBtn_Click"/>
+                <Button Margin="0, 25" Name="SettingsBtn" Width="300" Height="50" Content="Settings" Click="SettingsBtn_Click"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Name="GameModeStackPanel" Visibility="Hidden" VerticalAlignment="Center" Grid.ColumnSpan="3" Margin="0,23,0,22">
+                <Button Margin="0,25" Name="ClassicModeBtn"  Width="300" Height="50" Content="Classic mode" Click="ClassicModeBtn_Click"/>
+                <Button Margin="0, 25" Name="TimeModeBtn" Width="300" Height="50" Content="Time mode" Click="TimeModeBtn_Click"/>
+                <Button Margin="0, 25" Name="ExtraModeBtn" Width="300" Height="50" Content="Extra mode" Click="ExtraModeBtn_Click"/>
+                <Button Margin="0, 25" Name="BackToMenuFromGameModeMenu" Width="300" Height="50" Content="To main menu" Click="BackToMenuFromGameModeMenu_Click"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Name="TimeDurationStackPanel" Visibility="Hidden"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3" Grid.Column="0">
+                <TextBlock Margin="0,10,0,80" Text="Choose time" TextAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                <StackPanel  Visibility="Visible" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Name="OneMinuteTimeModeBtn"  Margin="20,0" HorizontalContentAlignment="Center" Height="50" Width="180" Content="One minute" Click="OneMinuteTimeModeBtn_Click"/>
+                    <Button Name="TwoMinutesTimeModeBtn" Margin="20,0" HorizontalContentAlignment="Center" Height="50"  Width="180" Content="Two minutes" Click="TwoMinutesTimeModeBtn_Click"/>
+                    <Button Name="ThreeMinutesTimeModeBtn" Margin="20,0" HorizontalContentAlignment="Center" Height="50"  Width="180"  Content="Three minutes" Click="ThreeMinutesTimeModeBtn_Click"/>
+                </StackPanel>
+                <Button Margin="0, 100,0,0" Name="BackToMenuFromTimeDuration" Width="300" Height="50" Content="Back" Click="BackToMenuFromTimeDuration_Click" />
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="1"  Name="SettingsStackPanel" Visibility="Hidden"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3" Grid.Column="0">
+                <TextBlock Margin="10,20,10,50" Text="Settings" TextAlignment="Center" FontSize="24" FontWeight="Bold"/>
+                <TextBlock Margin="10,10,10,20" Text="Choose speed" TextAlignment="Center" FontSize="16" FontWeight="Bold"/>
+
+                <StackPanel HorizontalAlignment="Center">
+                    <RadioButton Margin="10,10" Name="NormalRadioButton" GroupName="GameSpeedRadioBtns" VerticalContentAlignment="Center" Content="Normal" FontSize="16" Checked="RadioButton_Checked"/>
+                    <RadioButton Margin="10,10" Name="HighRadioButton" GroupName="GameSpeedRadioBtns" VerticalContentAlignment="Center" Content="High" FontSize="16" Checked="RadioButton_Checked"/>
+                    <RadioButton Margin="10,10" Name="ExtremeRadioButton"  GroupName="GameSpeedRadioBtns" VerticalContentAlignment="Center" Content="Extreme" FontSize="16" Checked="RadioButton_Checked"/>
+                </StackPanel>
+
+                <Button Margin="0, 50,0,0" Name="BackToMenuFromSettingsBtn" Width="150" Height="40" Content="OK" Click="BackToMenuFromSettingsBtn_Click" />
+            </StackPanel>
+
+            <!-- High scores -->
+            <StackPanel Grid.Row="1" Name="HighScoresMainStackPanel" Visibility="Hidden" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="1"  Margin="0,3,70,7">
+                <TextBlock Margin="10,15,10,10" Text="High scores" TextAlignment="Center" FontSize="24" FontWeight="Bold"/>
+
+                <StackPanel >
+                    <Button Margin="0,15" Name="ClassicModeHighScoresBtn"  Width="300" Height="50" Content="Classic mode" Click="ClassicModeHighScoresBtn_Click"/>
+                    <Button Margin="0,15" Name="TimeModeHighScoresBtn"  Width="300" Height="50" Content="Time mode" Click="TimeModeHighScoresBtn_Click"/>
+                    <Button Margin="0,15" Name="ExtraModeHighScoresBtn"  Width="300" Height="50" Content="Extra mode" Click="ExtraModeHighScoresBtn_Click"/>
+                    <Button Margin="0,15" Name="BackToMenuFromHighScoresBtn"  Width="300" Height="50" Content="Back" Click="BackToMenuFromHighScoresBtn_Click"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Name="TimeDurationHighScoreStackPanel" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3" Grid.Column="0">
+                <TextBlock Margin="10,15,10,10" Text="High scores:   time mode" TextAlignment="Center" FontSize="24" FontWeight="Bold"/>
+                <TextBlock Margin="0,20,0,30" Text="Choose time" TextAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                <StackPanel  Visibility="Visible" Margin="0,20,0,0" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Name="OneMinuteHighScoreTimeModeBtn"  Margin="20,0" HorizontalContentAlignment="Center" Height="50" Width="180" Content="One minute" Click="OneMinuteHighScoreTimeModeBtn_Click" />
+                    <Button Name="TwoMinutesHighScoreTimeModeBtn" Margin="20,0" HorizontalContentAlignment="Center" Height="50" Width="180" Content="Two minutes" Click="TwoMinutesHighScoreTimeModeBtn_Click" />
+                    <Button Name="ThreeMinutesHighScoreTimeModeBtn" Margin="20,0" HorizontalContentAlignment="Center" Height="50" Width="180" Content="Three minutes" Click="ThreeMinutesHighScoreTimeModeBtn_Click" />
+                </StackPanel>
+                <Button Margin="0, 100,0,0" Name="BackToMenuFromTimeDurationHighScore" Width="300" Height="50" Content="Back" Click="BackToMenuFromTimeDurationHighScore_Click" />
+            </StackPanel>
+
+            <Grid Grid.Row="1" Name="HighScoresResultsGrid" Visibility="Hidden" Grid.ColumnSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,10" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Margin="10,15,10,10" Text="High scores:" TextAlignment="Center" FontSize="24" FontWeight="Bold"/>
+                    <TextBlock Name="HighScoresModeTitleTextBlock" Margin="10,15,10,10" Text="" TextAlignment="Center" FontSize="24" FontWeight="Bold"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center">
+                    <TextBlock Text="Normal speed" TextAlignment="Center" FontSize="14" FontWeight="Bold" />
+                    <TextBlock Name="NormalSpeedNoResultsTextBlock" Visibility="Hidden" Text="No results" TextAlignment="Center" Margin="0,5,0,0"/>
+
+                    <DataGrid x:Name="NormalSpeedResultsDataGrid" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" GridLinesVisibility="Horizontal">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Place}"  Header="Place"></DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Score}"  Header="Score"></DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Date}"  Header="Date : time"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+                    <TextBlock Text="High speed" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
+                    <TextBlock Name="HighSpeedNoResultsTextBlock" Visibility="Hidden" Text="No results" TextAlignment="Center" Margin="0,5,0,0"/>
+
+                    <DataGrid  x:Name="HighSpeedResultsDataGrid" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" GridLinesVisibility="Horizontal">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Place}"  Header="Place"></DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Score}"  Header="Score"></DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Date}"  Header="Date : time"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center">
+                    <TextBlock Text="Extreme speed" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
+                    <TextBlock Name="ExtremeSpeedNoResultsTextBlock" Visibility="Hidden" Text="No results" TextAlignment="Center" Margin="0,5,0,0"/>
+
+                    <DataGrid  x:Name="ExtremeSpeedResultsDataGrid" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" GridLinesVisibility="Horizontal">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Place}"  Header="Place"></DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Score}"  Header="Score"></DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Date}"  Header="Date : time"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+
+                <Button  Grid.Row="2"  Grid.ColumnSpan="3" Margin="0,0,0,40" Name="BackToMenuFromHighScoresResultsBtn"  Width="300" Height="50" Content="Back" Click="BackToMenuFromHighScoresResultsBtn_Click"/>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Window>
